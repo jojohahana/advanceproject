@@ -29,6 +29,12 @@ export default function HomeScreen({ navigation }) {
         title="Fetch Data"
         onPress={() => navigation.navigate('FetchData')}
         />
+
+        <Button
+        title="Fetch Post"
+        onPress={() => navigation.navigate('FetchPost')}
+        />
+
       </View>
     );
   }

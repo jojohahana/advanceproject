@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'; //Import useEffecr dan useState
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
+import stylesx from '../component/MyStyles';
 
-export default FetchData = () => {
+export default FetchData = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -31,10 +33,25 @@ export default FetchData = () => {
           data={data}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
-            <Text>{item.title}, {item.releaseYear}</Text>
+            <Pressable onPress={
+                () => navigation.navigate('FetchDetail', {
+                    title: item.title, //Ambil item dari renderItem
+                    year: item.releaseYear
+                })
+            }>
+            <View style={stylesx.listRender}>
+                <Text style={stylesx.textRender}>
+                    {item.title}
+                </Text>
+            </View>
+            </Pressable>
           )}
         />
       )}
     </View>
   );
 };
+
+//Internal Style 
+//Jangan lupa import StyleSheet
+
