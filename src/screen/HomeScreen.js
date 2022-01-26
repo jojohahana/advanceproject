@@ -24,6 +24,11 @@ export default function HomeScreen({ navigation }) {
         title="Input State"
         onPress={() => navigation.navigate('InputState')}
         />
+
+        <Button
+        title="Fetch Data"
+        onPress={() => navigation.navigate('FetchData')}
+        />
       </View>
     );
   }

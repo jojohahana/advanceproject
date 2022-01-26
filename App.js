@@ -7,6 +7,7 @@ import HomeScreen from './src/screen/HomeScreen';
 import ProfileScreen from './src/screen/ProfileScreen';
 import DetailsScreen from './src/screen/DetailsScreen';
 import InputState from './src/screen/InputState';
+import FetchData from './src/screen/FetchData';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ function App() {
         <Stack.Screen name="Details" component={DetailsScreen}/>
         <Stack.Screen name="Profile" component={ProfileScreen}/>
         <Stack.Screen name="InputState" component={InputState}/>
+        <Stack.Screen name="FetchData" component={FetchData}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
