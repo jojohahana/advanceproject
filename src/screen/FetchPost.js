@@ -9,7 +9,7 @@ export default function FetchPost() {
     const submitData = () => {
         //alert("Data " + nama + umur + "telah disubmit !")
 
-        fetch('https://mywebsite.com/endpoint/', {
+        fetch('http://192.168.43.36/API-RN/postdata.php', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -23,7 +23,7 @@ export default function FetchPost() {
 
         .then((response) => response.json())
         .then((responseJson) => {
-            return responseJson;
+            alert(responseJson);
         })
         .catch((error) => {
         console.error(error);

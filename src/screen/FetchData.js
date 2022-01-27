@@ -11,9 +11,9 @@ export default FetchData = ({navigation}) => {
   //Constructur
   const getMovies = async () => {
      try {
-      const response = await fetch('https://reactnative.dev/movies.json');
+      const response = await fetch('http://192.168.43.36/API-RN/jsondata.php');
       const json = await response.json();
-      setData(json.movies);
+      setData(json.user);
     } catch (error) {
       console.error(error);
     } finally {
@@ -22,8 +22,16 @@ export default FetchData = ({navigation}) => {
   }
 
   
+  //useEffect(() => {
+  //  getMovies();
+  //}, []);
+
   useEffect(() => {
-    getMovies();
+    const unsubscribe = navigation.addListener('focus', () => {
+      console.log("Screen Focused")
+      getMovies();
+    });
+    return unsubscribe;
   }, []);
 
   return (
@@ -35,13 +43,14 @@ export default FetchData = ({navigation}) => {
           renderItem={({ item }) => (
             <Pressable onPress={
                 () => navigation.navigate('FetchDetail', {
-                    title: item.title, //Ambil item dari renderItem
-                    year: item.releaseYear
+                    id : item.id,
+                    nama: item.nama, //Ambil item dari renderItem
+                    umur: item.umur
                 })
             }>
             <View style={stylesx.listRender}>
                 <Text style={stylesx.textRender}>
-                    {item.title}
+                    {item.nama}
                 </Text>
             </View>
             </Pressable>
@@ -51,7 +60,3 @@ export default FetchData = ({navigation}) => {
     </View>
   );
 };
-
-//Internal Style 
-//Jangan lupa import StyleSheet
-
