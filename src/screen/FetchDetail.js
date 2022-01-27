@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import React, { useDebugValue, useEffect, useState } from 'react';
+import { Text, View, Button, Alert, TextInput } from 'react-native';
 
 export default function FetchDetail({ route, navigation }) { 
-    const { id, nama, umur } = route.params;
+    const { id } = route.params;
+
+    const [nama, setNama] = useState(route.params.nama)
+    const [umur, setUmur] = useState(route.params.umur)
 
     const deleteData = () => {
         //alert("Data " + nama + umur + "telah disubmit !")
@@ -39,8 +42,24 @@ export default function FetchDetail({ route, navigation }) {
             <Text>Nama : {nama}</Text>
             <Text>Umur : {umur}</Text>
 
+            <View style={{marginTop : 50 }}/>
+
+            <TextInput
+            value={nama}
+            onChangeText={(nama) => setNama(nama)}
+            style={{ borderBottomwidth: 1, borderBottomColor:'gray' }}/>
+
+            <TextInput
+            value={umur}
+            onChangeText={(umur) => setUmur(umur)}
+            style={{ borderBottomwidth: 1, borderBottomColor:'gray' }}/>        
+
             <Button
             title='Delete'
+            onPress={deleteData}/>
+
+            <Button
+            title='Update'
             onPress={deleteData}/>
 
         </View>
