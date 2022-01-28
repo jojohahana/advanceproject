@@ -1,7 +1,18 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import { Button, View, Text, ImageBackground } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 export default function HomeScreen({ navigation }) {
+
+  useEffect( () => {
+    //get token
+    messaging()
+      .getToken()
+      .then( token => {
+        console.log(token)
+      })
+  }, []);
+  
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
